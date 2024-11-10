@@ -20,4 +20,4 @@ const connection = new Sequelize('TP2_TPFINAL', 'eze', 'eze1234', {
 
   export default connection;
 
-  //REVISAR POR QUE NO CONECTA BIEN A LA BD
+  
