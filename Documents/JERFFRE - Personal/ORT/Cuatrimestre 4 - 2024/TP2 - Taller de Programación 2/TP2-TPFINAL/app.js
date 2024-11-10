@@ -3,6 +3,7 @@ import routes from "./routes/routes.js"
 import { getDate } from "./middlewares/getDate.js"
 import { notFound } from "./middlewares/notFound.js"
 import morgan from "morgan"
+import connection from "./connection/connection.js"
 
 // crear el server
 const app = express() 
