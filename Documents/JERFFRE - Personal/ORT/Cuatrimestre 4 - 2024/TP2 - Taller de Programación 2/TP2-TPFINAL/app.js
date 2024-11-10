@@ -18,25 +18,16 @@ app.use(morgan("tiny"))
 
 // middlewares
 
-
-
 // rutas
 app.use("/app", getDate, routes); //con el "use" app va a tener acceso a todo lo que este en routes.js
 
 app.use(notFound)
 
+await connection.sync({ force: true });
+
 // listen
-app.listen(8080, () => {
+const PORT = 8080
+app.listen(PORT, () => {
     console.log("🚀 ~ app.listen ~ listen: on port 8080")
 })
-
-
-
-
-
-/* Asi estaba antes */
-
-// app.use(express.json())
-// const PORT = 8080
-// app.listen(PORT, () => console.log(`Servidor ApiRestful escuchando http://localhost ${PORT}`))
-
+app.on('error', error => console.log(`Error en servidor: ${error.message}`))
