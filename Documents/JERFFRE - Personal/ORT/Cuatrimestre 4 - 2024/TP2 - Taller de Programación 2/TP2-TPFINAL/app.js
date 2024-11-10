@@ -1,14 +1,30 @@
 import express from "express" 
 import routes from "./routes/routes.js"
+import { getDate } from "./middlewares/getDate.js"
+import { notFound } from "./middlewares/notFound.js"
+import morgan from "morgan"
 
-const app = express() //Para crear el server (usando express logicamente)
+// crear el server
+const app = express() 
 
 //  console.log("🚀 ~ app:", app) //si se descomenta esto se va a ver todo lo que contiene app(es eterno)
 
+//middlewares fundamentales
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+app.use(morgan("tiny"))
 
-app.use("/app", routes); //con el "use" app va a tener acceso a todo lo que este en routes.js
+
+// middlewares
 
 
+
+// rutas
+app.use("/app", getDate, routes); //con el "use" app va a tener acceso a todo lo que este en routes.js
+
+app.use(notFound)
+
+// listen
 app.listen(8080, () => {
     console.log("🚀 ~ app.listen ~ listen: on port 8080")
 })
