@@ -18,6 +18,8 @@ class UserService {
       throw error;
     }
   };
+
+  
   createUserService = async (user) => {
     try {
       const newUser = await User.create(user);
@@ -26,6 +28,8 @@ class UserService {
       throw error;
     }
   };
+
+
   updateUserService = async (data) => {
     try {
       const { id, name, pass, mail } = data;

@@ -34,6 +34,8 @@ User.init(
       type: DataTypes.STRING,
     },
   },
+
+  
   {
     sequelize: connection,
     modelName: "User",
