@@ -4,16 +4,14 @@ class UserService {
   
     loginService = async (user) => {
     try {
-      const { mail, pass } = user;
-      const userLogin = await User.findOne({ where: { mail } });
-      if (!userLogin) throw new Error("No pasas");
-      const comparePass = await userLogin.compare(pass);
-      // console.log(
-      //   `🚀 ~ UserService ~ loginService= ~ comparePass:`,
-      //   comparePass
-      // );
-      if (!comparePass) throw new Error("No pasas");
-      return userLogin;
+      // const { mail, pass } = user;
+      // const userLogin = await User.findOne({ where: { mail } });
+      // if (!userLogin) throw new Error("No pasas");
+      // const comparePass = await userLogin.compare(pass);
+
+      const newUser = await User.create(user)
+      // if (!comparePass) throw new Error("No pasas");
+      return newUser;
     } catch (error) {
       throw error;
     }

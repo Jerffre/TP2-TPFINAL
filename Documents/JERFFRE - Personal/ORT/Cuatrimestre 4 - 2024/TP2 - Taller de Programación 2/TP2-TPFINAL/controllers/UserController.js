@@ -24,37 +24,16 @@ getUserById = async (req, res) => {
     }
 };
 
-
-createUser = async (req, res, next) => {
-  console.log(`🚀 ~ UserController ~ createUser= ~ req:`, req.body);
-  try {
-    const { name, pass, mail } = req.body;
-
-    // Validar que password no esté vacío o nulo
-    if (!password) {
-      throw new Error("Password is required.");
+ createUser = async (req, res, next) => {
+     console.log(`🚀 ~ UserController ~ createUser= ~ req:`, req.body);
+     try {
+       const { name, mail, pass } = req.body;
+       const data = await this.userService.createUserService({name, mail, pass});
+       res.status(200).send({ success: true, message: data });
+    } catch (error) {
+      res.status(400).send({ success: false, message: error.message });
     }
-
-    // Cambiar `password` a `pass` para coincidir con el modelo
-    const data = await this.userService.createUserService({ name, pass, mail });
-    res.status(200).send({ success: true, message: data });
-  } catch (error) {
-    res.status(400).send({ success: false, message: error.message });
-  }
-};
-
-
-
-// createUser = async (req, res, next) => {
-//     console.log(`🚀 ~ UserController ~ createUser= ~ req:`, req.body);
-//     try {
-//       const { name, password, mail } = req.body;
-//       const data = await this.userService.createUserService({name, password, mail});
-//       res.status(200).send({ success: true, message: data });
-//     } catch (error) {
-//       res.status(400).send({ success: false, message: error.message });
-//     }
-// };
+ };
 
 updateUser = async (req, res) => {
     try {

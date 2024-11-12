@@ -2,12 +2,15 @@ import { DataTypes, Model } from "sequelize";
 import connection from "../connection/connection.js";
 import bcrypt from "bcrypt";
 
+
 class User extends Model {
   compare = async (myPlaintextPassword) => {
     const data = await bcrypt.compare(myPlaintextPassword, this.pass);
     return data
   };
 }
+
+
 
 User.init(
   {
@@ -38,7 +41,7 @@ User.init(
   
   {
     sequelize: connection,
-    modelName: "User",
+    modelName: "User", //Este va a ser el nombre de la tabla (en sql server)
   }
 );
 
