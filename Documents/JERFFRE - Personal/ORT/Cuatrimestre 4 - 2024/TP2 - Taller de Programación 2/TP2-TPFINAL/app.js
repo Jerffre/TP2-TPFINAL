@@ -3,6 +3,7 @@ import routes from "./routes/routes.js"
 import { getDate } from "./middlewares/getDate.js"
 import { notFound } from "./middlewares/notFound.js"
 import connection from "./connection/connection.js"
+import { SERVER_PORT } from "./config/config.js"
 
 
 // crear el server
@@ -26,8 +27,7 @@ app.use(notFound)
 await connection.sync({ force: true });
 
 // listen
-const PORT = 8080
-app.listen(PORT, () => {
-    console.log("🚀 ~ app.listen ~ listen: on port 8080")
+app.listen(SERVER_PORT, () => {
+    console.log(`🚀 ~ app.listen ~ listen: on port ${SERVER_PORT}`)
 })
 app.on('error', error => console.log(`Error en servidor: ${error.message}`))

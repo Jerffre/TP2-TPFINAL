@@ -1,12 +1,12 @@
 //conexion a la base de datos (usando sql server)
-
 import { Sequelize } from "sequelize";
+import {DB_NAME, DB_USER, DB_PASS, DB_HOST, DB_DIALECT, DB_PORT} from "../config/config,js"
 
 
-const connection = new Sequelize('TP2_TPFINAL', 'eze', 'eze1234', {
-    host: 'localhost',
-    dialect: 'mssql',
-    port: 1433,
+const connection = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
+    host: DB_HOST,
+    dialect: DB_DIALECT,
+    port: DB_PORT,
   });
 
 
