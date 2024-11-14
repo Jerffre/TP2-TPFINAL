@@ -31,3 +31,11 @@ app.listen(SERVER_PORT, () => {
     console.log(`🚀 ~ app.listen ~ listen: on port ${SERVER_PORT}`)
 })
 app.on('error', error => console.log(`Error en servidor: ${error.message}`))
+
+
+
+// para ver el fin de la terminal jajaj
+const saludo = "Hola Eze";
+
+console.log("🚀 ~ saludo:", saludo)
+
