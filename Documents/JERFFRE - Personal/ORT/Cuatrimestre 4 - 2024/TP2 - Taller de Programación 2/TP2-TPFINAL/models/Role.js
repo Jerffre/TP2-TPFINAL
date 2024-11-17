@@ -9,7 +9,10 @@ Role.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true // Roles como "admin", "editor", "viewer"
     },
+
+
   },
   {
     sequelize: connection,
