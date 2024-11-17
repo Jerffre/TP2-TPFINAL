@@ -8,4 +8,5 @@ const DB_HOST = "localhost";
 const DB_DIALECT = "mssql";
 const DB_PORT = 1433;
 
+
 export { SERVER_PORT, DB_NAME, DB_USER, DB_PASS, DB_HOST, DB_DIALECT, DB_PORT };

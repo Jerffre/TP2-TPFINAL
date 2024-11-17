@@ -7,8 +7,10 @@ const roleRoutes = Router();
 
 const roleController = new RoleController()
 
-roleRoutes.get("/", roleController.getAllRoles)
-roleRoutes.post("/", roleController.createRole)
+roleRoutes.get("/", roleController.getAllRoles);
+roleRoutes.get("/:id", roleController.getRoleById);
+roleRoutes.post("/", roleController.createRole);
+
 
 
 export default roleRoutes;

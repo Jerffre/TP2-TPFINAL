@@ -2,26 +2,33 @@ import { User } from "../models/models.js";
 
 class UserService {
   
-    loginService = async (user) => {
+  createUserService = async (user) => {
     try {
-      // const { mail, pass } = user;
-      // const userLogin = await User.findOne({ where: { mail } });
-      // if (!userLogin) throw new Error("No pasas");
-      // const comparePass = await userLogin.compare(pass);
-
-      const newUser = await User.create(user)
-      // if (!comparePass) throw new Error("No pasas");
+      const newUser = await User.create(user);
       return newUser;
     } catch (error) {
       throw error;
     }
   };
 
-  
-  createUserService = async (user) => {
+  getAllUsers = async () => {
     try {
-      const newUser = await User.create(user);
-      return newUser;
+      const users = await User.findAll({
+        attributes: ["id","name", "mail", "address", "roleId"],
+      });
+      return users;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  getUserById = async (id) => {
+    try {
+      const user = await User.findOne({
+        where: { id: id },
+        attributes: ["name", "mail", "address", "roleId"],
+      });
+      return user;
     } catch (error) {
       throw error;
     }

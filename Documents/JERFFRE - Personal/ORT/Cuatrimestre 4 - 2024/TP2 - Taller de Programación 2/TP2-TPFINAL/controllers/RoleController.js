@@ -27,6 +27,26 @@ createRole = async (req, res, next) => {
  };  
 
 
+ getAllRoleService = async (req, res) => {
+  try {
+    const roles = await this.roleService.getAllRoleService();
+    res.status(200).send({ success: true, message: roles });
+  } catch (error) {
+    res.status(400).send({ success: false, message: error.message });
+  }
+};
+
+getRoleById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const role = await this.roleService.getRoleById(id);
+    res.status(200).send({ success: true, message: role });
+  } catch (error) {
+    res.status(400).send({ success: false, message: error.message });
+  }
+};
+
+
  
 }
 

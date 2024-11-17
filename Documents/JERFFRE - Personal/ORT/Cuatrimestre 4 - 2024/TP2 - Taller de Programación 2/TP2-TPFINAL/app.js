@@ -24,7 +24,10 @@ app.use(notFound)
 
 
 
-await connection.sync({ force: true });
+await connection.sync({ force: false }) // Usa { force: true } solo si podes eliminar y recrear las tablas desde sql
+.then(() => console.log("Base de datos sincronizada"))
+.catch((err) => console.error("Error al sincronizar la base de datos:", err));
+
 
 // listen
 app.listen(SERVER_PORT, () => {

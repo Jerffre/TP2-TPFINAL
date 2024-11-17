@@ -1,7 +1,7 @@
 import { Router } from "express";
 import ProductController from "../controllers/ProductController.js";
 import authorize from "../middlewares/authorize.js";
-
+import { ROLES } from "../config/configRoles.js";
 
 const productRoutes = Router();
 
@@ -12,15 +12,15 @@ productRoutes.get("/", productController.getAllProductService)
 productRoutes.get("/:id", productController.getProductByIdService)
 
 // Solo "admin" o "editor" pueden crear productos
-productRoutes.post("/", authorize(["admin", "editor"]), productController.createProductService);
+productRoutes.post("/", authorize([ROLES.ADMIN, ROLES.EDITOR]), productController.createProductService);
 
 
 // Solo "admin" o "editor" pueden actualizar productos
-productRoutes.put("/:id", authorize(["admin", "editor"]), productController.updateProductService);
+productRoutes.put("/:id", authorize([ROLES.ADMIN, ROLES.EDITOR]), productController.updateProductService);
 
 
 // Solo "admin" puede eliminar productos
-productRoutes.delete("/:id", authorize(["admin"]), productController.deleteProductService);
+productRoutes.delete("/:id", authorize([ROLES.ADMIN]), productController.deleteProductService);
 
 
 
