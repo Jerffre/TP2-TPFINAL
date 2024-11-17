@@ -5,7 +5,7 @@ import { ROLES } from "../config/configRoles.js";
 
 const productRoutes = Router();
 
-const ProductController = new ProductController()
+const productController = new ProductController()
 
 // Todos los usuarios pueden ver todos los productos (o por id)
 productRoutes.get("/", productController.getAllProductService)

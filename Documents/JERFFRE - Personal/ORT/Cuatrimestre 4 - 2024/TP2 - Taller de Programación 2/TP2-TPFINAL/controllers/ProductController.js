@@ -7,7 +7,7 @@ class ProductController {
   createProductService = async (req, res, next) => {
     try {
       const { name, precio, stock } = req.body;
-      const newProduct = await this.productService.createUserService({
+      const newProduct = await this.productService.createProductService({
         name,
         precio,
         stock,
@@ -50,7 +50,7 @@ class ProductController {
         return res.status(404).json({ message: "Producto no encontrado." });
       }
 
-      const updatedProduct = await this.productService.updateUserService({id, name, precio, stock});
+      const updatedProduct = await this.productService.updateProductService({id, name, precio, stock});
       res.status(200).json(updatedProduct);
 
     } catch (error) {
