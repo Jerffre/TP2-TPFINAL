@@ -1,6 +1,5 @@
 import express from "express" 
 import routes from "./routes/routes.js"
-import { getDate } from "./middlewares/getDate.js"
 import { notFound } from "./middlewares/notFound.js"
 import connection from "./connection/connection.js"
 import { SERVER_PORT } from "./config/config.js"

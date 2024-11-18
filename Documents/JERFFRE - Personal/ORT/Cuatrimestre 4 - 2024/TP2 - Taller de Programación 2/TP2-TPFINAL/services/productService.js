@@ -7,11 +7,16 @@ class ProductService {
       const products = await Product.findAll({
         attributes: ["id", "name"],
       });
+      if(ROLES.ADMIN)
       return products;
     } catch (error) {
       throw error;
     }
   };
+
+
+
+
   getProductByIdService = async (id) => {
     try {
       const products = await Product.findAll({
@@ -23,6 +28,8 @@ class ProductService {
       throw error;
     }
   };
+
+  
   // Agregar validación de tipo Usuario: solo Admin puede agregar productos
   createProductService = async (product) => {
     try {

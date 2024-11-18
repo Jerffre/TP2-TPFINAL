@@ -1,5 +1,6 @@
 import ProductService from "../services/productService.js";
 
+
 class ProductController {
 
   productService = new ProductService();
@@ -19,7 +20,32 @@ class ProductController {
   };
 
 
+  getAllProductService = async (req, res) => {
+    try {
+      // Validar que el rol sea "admin", "editor" o "viewer"
+      const user = await User.findByPk(req.userId, { include: Role });
+      if (!user || !["admin", "editor", "viewer"].includes(user.Role.name)) {
+        return res.status(403).json({
+          success: false,
+          message: "No tienes permiso para realizar esta acción.",
+        });
+      }
+  
+      const products = await Product.findAll();
+      res.status(200).json({
+        success: true,
+        data: products,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        success: false,
+        message: "Error al obtener los productos.",
+      });
+    }
+  };
 
+/*
   getAllProductService = async (req, res) => {
     try {
       const products = await this.productService.getAllProductService({ include: { model: User, as: 'creator' } });
@@ -28,6 +54,7 @@ class ProductController {
       res.status(400).send({ success: false, message: error.message });
     }
   };
+*/
 
   getProductByIdService = async (req, res) => {
     try {

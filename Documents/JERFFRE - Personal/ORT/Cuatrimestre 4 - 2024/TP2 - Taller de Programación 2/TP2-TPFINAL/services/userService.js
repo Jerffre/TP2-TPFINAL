@@ -11,10 +11,10 @@ class UserService {
     }
   };
 
-  getAllUsers = async () => {
+  getAllUsersService = async () => {
     try {
       const users = await User.findAll({
-        attributes: ["id","name", "mail", "address", "roleId"],
+        attributes: ["id","name", "mail", "roleId"],
       });
       return users;
     } catch (error) {

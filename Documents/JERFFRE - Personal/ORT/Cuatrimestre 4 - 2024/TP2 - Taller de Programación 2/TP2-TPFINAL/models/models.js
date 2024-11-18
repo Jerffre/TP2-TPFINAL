@@ -4,8 +4,6 @@ import Role from "./Role.js";
 import User from "./User.js";
 import Product from "./Product.js";
 
-// User.belongsTo(Role);
-// Role.hasMany(User);
 
 // Relaciones entre User y Role
 User.belongsTo(Role, { foreignKey: "RoleId" }); // Cada usuario tiene un rol
