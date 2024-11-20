@@ -14,17 +14,4 @@ productRoutes.post("/",productController.createProductController)
 productRoutes.put("/:id",productController.updateProductController)
 productRoutes.delete("/:id",productController.deleteProductController)
 
-
-// Solo "admin" o "editor" pueden crear productos
-//productRoutes.post("/", authorize([ROLES.ADMIN, ROLES.EDITOR]), productController.createProductService);
-
-
-// Solo "admin" o "editor" pueden actualizar productos
-//productRoutes.put("/:id", authorize([ROLES.ADMIN, ROLES.EDITOR]), productController.updateProductService);
-
-
-// Solo "admin" puede eliminar productos
-//productRoutes.delete("/:id", authorize([ROLES.ADMIN]), productController.deleteProductService);
-
-
 export default productRoutes;

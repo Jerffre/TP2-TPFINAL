@@ -44,7 +44,6 @@ Video Configuracion SQL SERVER: https://www.youtube.com/watch?v=uDS6c6DZyY4
 - Una vez logrado lo anterior, expandir roles, usuarios y nuevos rubros de acuerdo a las solicitudes del cliente y adaptar la logica previamente definida.
 - Optimizar las consultas a la base de datos, utilizando índices y técnicas avanzadas de Sequelize. Explorar alternativas a esto ultimo. Que logren resultados similares pero con otra sintaxis.
 
-
 ## package.json 
 --> Scripts --> dev: es el de desarrollo (el nuestro, por eso tiene el watch para ir viendo que pasa en el la termina). Es el que va a tener que usar el profesor. Seria "npm run dev" en la terminal.
 
