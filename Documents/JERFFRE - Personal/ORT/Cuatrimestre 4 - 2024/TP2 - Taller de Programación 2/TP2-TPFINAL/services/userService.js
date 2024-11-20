@@ -25,7 +25,7 @@ class UserService {
     }
   };
 
-  getUserById = async (id) => {
+  getUserByIdService = async (id) => {
     try {
       const user = await User.findOne({
         where: { id: id },

@@ -28,7 +28,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-      RoleId: { //revisar esto bien
+      RoleId: { //ID del rol (admin, editor, viewer --> ver los valores en la tabla) que va a tener el usuario.
       type: DataTypes.INTEGER,
       allowNull: false,
     },
