@@ -10,8 +10,8 @@ const productController = new ProductController()
 // Todos los usuarios pueden ver todos los productos (o por id)
 productRoutes.get("/", productController.getAllProduct)
 productRoutes.get("/:id", productController.getProductById)
-productRoutes.post("/",productController.createProduct)
-productRoutes.put("/:id",productController.updateProduct)
+productRoutes.post("/",productController.createProductService)
+productRoutes.put("/:id",productController.updateProductService)
 productRoutes.delete("/:id",productController.deleteProduct)
 
 

@@ -54,8 +54,22 @@ class UserService {
   };
 
   deleteUserService = async (id) => {
-    return `deleteUserService ${id}`;
+    try {
+      const deletedUser = await User.destroy({
+        where: { id: id },
+      });
+      if (deletedUser === 0) {
+        throw new Error("User not found");
+      }
+      return { message: "User soft deleted successfully" };
+    } catch (error) {
+      throw error;
+    }
   };
+
+
+
+
 }
 
 export default UserService;

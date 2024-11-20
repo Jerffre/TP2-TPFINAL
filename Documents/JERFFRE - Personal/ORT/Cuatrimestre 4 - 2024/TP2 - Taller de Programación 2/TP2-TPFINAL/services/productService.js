@@ -7,7 +7,7 @@ class ProductService {
       const products = await Product.findAll({
         attributes: ["id", "name"],
       });
-      //if(ROLES.ADMIN)
+     
       return products;
     } catch (error) {
       throw error;
@@ -39,11 +39,16 @@ class ProductService {
       throw error;
     }
   };
+
+
+
+
+
   updateProductService = async (data) => {
     try {
-      const { id, name, precio, stock, createdBy } = data;
+      const { id, name, precio, stock} = data;
       const products = await Product.update(
-        { id, name, precio, stock, createdBy },
+        { id, name, precio, stock},
         {
           where: { id },
         }

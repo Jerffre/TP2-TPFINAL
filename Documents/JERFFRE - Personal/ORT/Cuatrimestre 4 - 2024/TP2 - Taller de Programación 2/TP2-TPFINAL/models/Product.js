@@ -9,14 +9,6 @@ class Producto extends Model {
 Producto.init(
   {
 
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-        // unique:true        
-      },
-
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,31 +22,15 @@ Producto.init(
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    
-    createdBy: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'Users', // Tabla de referencia
-        key: 'id'
-      }
     }
-  }, { sequelize: connection, modelName: 'Product' }
-
-    /*
-    createdBy: {
-       type: DataTypes.INTEGER,
-      allowNull: false, // Relación con el creador (User)
-     
-    },
-  },
-  {
-    sequelize: connection,
-    modelName: "Producto",
+    
   }
-
-  */
+  ,
+   { 
+    sequelize: connection,
+    modelName: "Product"
+   }
+  
 );
 
 

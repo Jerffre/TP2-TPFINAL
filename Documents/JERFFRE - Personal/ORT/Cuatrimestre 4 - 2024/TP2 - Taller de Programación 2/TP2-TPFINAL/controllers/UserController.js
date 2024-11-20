@@ -7,7 +7,7 @@ userService = new UserService();
  createUser = async (req, res, next) => {
      console.log(`🚀 ~ UserController ~ createUser= ~ req:`, req.body);
      try {
-       const { name, mail, pass, roleId } = req.body;
+       const { name, mail, pass, RoleId } = req.body;
        const data = await this.userService.createUserService({name, mail, pass, RoleId});
        res.status(200).send({ success: true, message: data });
     } catch (error) {

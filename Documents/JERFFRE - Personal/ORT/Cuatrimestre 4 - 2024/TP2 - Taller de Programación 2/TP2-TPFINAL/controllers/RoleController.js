@@ -27,16 +27,6 @@ createRole = async (req, res, next) => {
  };  
 
 
-/* getAllRoleService = async (req, res) => {
-  try {
-    const roles = await this.roleService.getAllRoleService();
-    res.status(200).send({ success: true, message: roles });
-  } catch (error) {
-    res.status(400).send({ success: false, message: error.message });
-  }
-};
-*/
-
 getRoleById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -47,6 +37,15 @@ getRoleById = async (req, res) => {
   }
 };
 
+deleteRole = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await this.roleService.deleteRole(id);
+    res.status(200).send({ success: true, message: data });
+  } catch (error) {
+    res.status(400).send({ success: false, message: error.message });
+  }
+};
 
  
 }

@@ -5,7 +5,7 @@ const DB_NAME = "TP2_TPFINAL";
 const DB_USER = "eze";
 const DB_PASS = "eze1234";
 const DB_HOST = "localhost";
-const DB_DIALECT = "mssql";
+const DB_DIALECT = "mssql"; //SQL SERVER
 const DB_PORT = 1433;
 
 

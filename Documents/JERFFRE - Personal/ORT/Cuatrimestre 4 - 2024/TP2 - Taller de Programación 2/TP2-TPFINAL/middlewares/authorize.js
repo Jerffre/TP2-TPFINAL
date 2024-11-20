@@ -1,27 +1,29 @@
 // // middleware para verificar si el usuario tiene uno de los roles permitidos para acceder a una ruta especifica
+import User from "../models/User.js";
+import Role from "../models/Role.js";
 
 
-// const authorize = (allowedRoles) => {
-//     return (req, res, next) => {
-//       try {
-//         if (!allowedRoles.includes(req.user.role)) {
-//           return res.status(403).json({ message: "No tienes permisos para realizar esta acción." });
-//         }
-//         next();
-//       } catch (error) {
-//         res.status(500).json({ error: error.message });
-//       }
-//     };
-//   };
+// una forma de hacerlo
+
+const authorize = (allowedRoles) => {
+    return (req, res, next) => {
+      try {
+         if (!allowedRoles.includes(req.user.role)) {
+           return res.status(403).json({ message: "No tienes permisos para realizar esta acción." });
+        }
+        next();
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+     }
+     };
+   };
   
 
-//   export default authorize;
 
 
 // otra forma
 
-import User from "../models/User.js";
-import Role from "../models/Role.js";
+/*
 
 const authorize = (allowedRoles) => {
   return async (req, res, next) => {
@@ -47,4 +49,12 @@ const authorize = (allowedRoles) => {
   };
 };
 
+
+*/
+
+
+
 export default authorize;
+
+
+

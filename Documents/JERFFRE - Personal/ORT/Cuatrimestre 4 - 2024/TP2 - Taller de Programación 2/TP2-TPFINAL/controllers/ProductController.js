@@ -5,8 +5,27 @@ class ProductController {
 
   productService = new ProductService();
 
+  createProductService = async (req, res, next) => {
+    try {
+      const { name, precio, stock } = req.body;
+      const newProduct = await this.productService.createProductService({
+        name,
+        precio,
+        stock
+        
+      });
+      res.status(200).send({ success: true, message: newProduct });
+    } catch (error) {
+      res.status(400).send({ success: false, message: error.message });
+    }
+  };
+  
+
+  /*
+
   //si es que se hace así el configRoles.js y el authorize.js no se usan
   //verifica que el rol sea editor o admin
+
   createProduct = async (req, res, next) => {
     try {
       const { name, precio, stock, createdBy, nombreRol } = req.body;
@@ -31,6 +50,10 @@ class ProductController {
   };
 
 
+*/
+
+
+/*
   //yo comentaría esto y descomentaría lo de abajo
   getAllProduct = async (req, res) => {
     try {
@@ -57,7 +80,12 @@ class ProductController {
     }
   };
 
-/*
+
+  */
+
+
+
+
   getAllProduct = async (req, res) => {
     try {
       const products = await this.productService.getAllProductService({ include: { model: User, as: 'creator' } });
@@ -66,7 +94,7 @@ class ProductController {
       res.status(400).send({ success: false, message: error.message });
     }
   };
-*/
+
 
 //no verifica nada porque cualquiera puede verlo
   getProductById = async (req, res) => {
@@ -79,31 +107,50 @@ class ProductController {
     }
   };
  
-  //verifica que el rol sea admin o editor
-  updateProduct = async (req, res) => {
-    try {
-      const { name, precio, stock, createdBy, nombreRol} = req.body;
-      const { id } = req.params;
 
-      if(nombreRol != "editor" || nombreRol !="admin"){
-        return res.status(403).json({
-          success: false,
-          message: "No tienes permiso para realizar esta acción.",
-        });
-      }
+  updateProductService = async (req, res) => {
+    try {
+      const { name, precio, stock} = req.body;
+      const { id } = req.params;
 
       const previousProduct = await Producto.findByPk(id);
       if (!previousProduct) {
         return res.status(404).json({ message: "Producto no encontrado." });
       }
 
-      const updatedProduct = await this.productService.updateProductService({id, name, precio, stock, createdBy});
+      const updatedProduct = await this.productService.updateProductService({id, name, precio, stock});
       res.status(200).json(updatedProduct);
 
     } catch (error) {
       res.status(400).send({ success: false, message: error.message });
     }
   };
+
+  //verifica que el rol sea admin o editor
+  // updateProduct = async (req, res) => {
+  //   try {
+  //     const { name, precio, stock, nombreRol} = req.body;
+  //     const { id } = req.params;
+
+  //     if(nombreRol != "editor" || nombreRol !="admin"){
+  //       return res.status(403).json({
+  //         success: false,
+  //         message: "No tienes permiso para realizar esta acción.",
+  //       });
+  //     }
+
+  //     const previousProduct = await Producto.findByPk(id);
+  //     if (!previousProduct) {
+  //       return res.status(404).json({ message: "Producto no encontrado." });
+  //     }
+
+  //     const updatedProduct = await this.productService.updateProductService({id, name, precio, stock, createdBy});
+  //     res.status(200).json(updatedProduct);
+
+  //   } catch (error) {
+  //     res.status(400).send({ success: false, message: error.message });
+  //   }
+  // };
 
 
 //verifica que el rol sea admin 
@@ -207,23 +254,7 @@ class ProductController {
   };
  
   
-  updateProductService = async (req, res) => {
-    try {
-      const { name, precio, stock} = req.body;
-      const { id } = req.params;
 
-      const previousProduct = await Producto.findByPk(id);
-      if (!previousProduct) {
-        return res.status(404).json({ message: "Producto no encontrado." });
-      }
-
-      const updatedProduct = await this.productService.updateProductService({id, name, precio, stock});
-      res.status(200).json(updatedProduct);
-
-    } catch (error) {
-      res.status(400).send({ success: false, message: error.message });
-    }
-  };
 
 
 
