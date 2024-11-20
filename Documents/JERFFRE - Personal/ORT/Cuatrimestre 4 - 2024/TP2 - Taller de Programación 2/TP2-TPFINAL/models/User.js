@@ -27,7 +27,9 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     roleId: { //revisar esto bien
+
       type: DataTypes.INTEGER,
       allowNull: false,
     },    
