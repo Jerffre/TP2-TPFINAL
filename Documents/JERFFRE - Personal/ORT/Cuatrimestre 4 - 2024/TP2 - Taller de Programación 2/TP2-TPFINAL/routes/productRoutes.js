@@ -8,19 +8,23 @@ const productRoutes = Router();
 const productController = new ProductController()
 
 // Todos los usuarios pueden ver todos los productos (o por id)
-productRoutes.get("/", productController.getAllProductService)
-productRoutes.get("/:id", productController.getProductByIdService)
+productRoutes.get("/", productController.getAllProduct)
+productRoutes.get("/:id", productController.getProductById)
+productRoutes.post("/",productController.createProduct)
+productRoutes.put("/:id",productController.updateProduct)
+productRoutes.delete("/:id",productController.deleteProduct)
+
 
 // Solo "admin" o "editor" pueden crear productos
-productRoutes.post("/", authorize([ROLES.ADMIN, ROLES.EDITOR]), productController.createProductService);
+//productRoutes.post("/", authorize([ROLES.ADMIN, ROLES.EDITOR]), productController.createProductService);
 
 
 // Solo "admin" o "editor" pueden actualizar productos
-productRoutes.put("/:id", authorize([ROLES.ADMIN, ROLES.EDITOR]), productController.updateProductService);
+//productRoutes.put("/:id", authorize([ROLES.ADMIN, ROLES.EDITOR]), productController.updateProductService);
 
 
 // Solo "admin" puede eliminar productos
-productRoutes.delete("/:id", authorize([ROLES.ADMIN]), productController.deleteProductService);
+//productRoutes.delete("/:id", authorize([ROLES.ADMIN]), productController.deleteProductService);
 
 
 
