@@ -2,13 +2,10 @@ import { DataTypes, Model } from "sequelize";
 import connection from "../connection/connection.js";
 
 
-class Producto extends Model {
-
-}
+class Producto extends Model {}
 
 Producto.init(
   {
-
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -24,15 +21,12 @@ Producto.init(
       allowNull: false,
     }
     
-  }
-  ,
-   { 
+  },
+  { 
     sequelize: connection,
-    modelName: "Product"
-   }
+    modelName: "Product",
+  }
   
 );
-
-
 
 export default Producto;

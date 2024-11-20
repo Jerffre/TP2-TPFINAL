@@ -1,6 +1,29 @@
 import { User } from "../models/models.js";
 
 class UserService {
+
+  getAllUsersService = async () => {
+    try {
+      const users = await User.findAll({
+        attributes: ["id","name", "mail", "RoleId", "pass"],
+      });
+      return users;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  getUserByIdService = async (id) => {
+    try {
+      const user = await User.findOne({
+        where: { id: id },
+        attributes: ["name", "mail", "RoleId"],
+      });
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  };
   
   createUserService = async (user) => {
     try {
@@ -14,40 +37,16 @@ class UserService {
     }
   };
 
-  getAllUsersService = async () => {
-    try {
-      const users = await User.findAll({
-        attributes: ["id","name", "mail", "RoleId", "pass"],
-      });
-      return users;
-    } catch (error) {
-      throw error;
-    }
-  };
-
-  getUserById = async (id) => {
-    try {
-      const user = await User.findOne({
-        where: { id: id },
-        attributes: ["name", "mail", "RoleId"],
-      });
-      return user;
-    } catch (error) {
-      throw error;
-    }
-  };
-
-
   updateUserService = async (data) => {
     try {
       const { id, name, pass, mail, RoleId} = data;
-      const users = await User.update(
+      const updatedUser = await User.update(
         { name, pass, mail, RoleId },
-        {
+        { 
           where: { id },
         }
       );
-      return users;
+      return updatedUser;
     } catch (error) {
       throw error;
     }
@@ -66,9 +65,6 @@ class UserService {
       throw error;
     }
   };
-
-
-
 
 }
 

@@ -2,7 +2,7 @@
 import { DataTypes, Model } from "sequelize";
 import connection from "../connection/connection.js";
 
-class Role extends Model {}
+class Role extends Model {};
 
 Role.init(
   {
@@ -12,12 +12,12 @@ Role.init(
       unique: true // Roles como "admin", "editor", "viewer"
     },
 
-
   },
   {
     sequelize: connection,
     modelName: "Role",
   }
+  
 );
 
 export default Role;

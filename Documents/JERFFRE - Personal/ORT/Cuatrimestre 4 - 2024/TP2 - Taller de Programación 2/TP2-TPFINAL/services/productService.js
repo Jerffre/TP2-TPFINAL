@@ -6,31 +6,30 @@ class ProductService {
     try {
       const products = await Product.findAll({
         attributes: ["id", "name"],
-      });
-     
+      });     
+
       return products;
     } catch (error) {
       throw error;
     }
   };
-
-
-
 
   getProductByIdService = async (id) => {
     try {
-      const products = await Product.findAll({
+      const product = await Product.findOne({
         where: { id },
         attributes: ["id", "name"],
       });
-      return products;
+
+      if (!product) {
+        throw new Error("Product not found or access restricted.");
+      }
+      return product;
     } catch (error) {
       throw error;
     }
-  };
-
+  };  
   
-  // Agregar validación de tipo Usuario: solo Admin puede agregar productos
   createProductService = async (product) => {
     try {
       const newProduct = await Product.create(product);
@@ -39,10 +38,6 @@ class ProductService {
       throw error;
     }
   };
-
-
-
-
 
   updateProductService = async (data) => {
     try {
@@ -60,8 +55,19 @@ class ProductService {
   };
 
   deleteProductService = async (id) => {
-    return `deleteProductService ${id}`;
+    try {
+        const product = await Product.destroy (
+          { active: false },
+          {
+            where: { id },
+          }
+        );
+        return product;
+      } catch (error) {
+        throw error;
+      }
   };
+  
 }
 
 export default ProductService;

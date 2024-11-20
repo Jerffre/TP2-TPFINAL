@@ -4,13 +4,12 @@ import bcrypt from "bcrypt";
 
 
 class User extends Model {
+
   compare = async (myPlaintextPassword) => {
     const data = await bcrypt.compare(myPlaintextPassword, this.pass);
     return data
   };
 }
-
-
 
 User.init(
   {
@@ -28,11 +27,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-      RoleId: { //revisar esto bien
+    roleId: { //revisar esto bien
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    
+    },    
     salt: {
       type: DataTypes.STRING,
     },
@@ -43,8 +41,6 @@ User.init(
     modelName: "User", //Este va a ser el nombre de la tabla (en sql server)
   }
 );
-
-
 
 User.beforeCreate(async (user) => {
   const salt = await bcrypt.genSalt(10);

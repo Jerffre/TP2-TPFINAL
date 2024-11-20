@@ -1,21 +1,10 @@
 import UserService from "../services/userService.js";
 
 class UserController {
+  
+  userService = new UserService();
 
-userService = new UserService();
-
- createUser = async (req, res, next) => {
-     console.log(`🚀 ~ UserController ~ createUser= ~ req:`, req.body);
-     try {
-       const { name, mail, pass, RoleId } = req.body;
-       const data = await this.userService.createUserService({name, mail, pass, RoleId});
-       res.status(200).send({ success: true, message: data });
-    } catch (error) {
-      res.status(400).send({ success: false, message: error.message });
-    }
- };
- 
-getAllUsers = async (req, res) => {
+  getAllUsersController = async (req, res) => {
     try {
       const data = await this.userService.getAllUsersService();
       res.status(200).send({ success: true, message: data });
@@ -24,7 +13,7 @@ getAllUsers = async (req, res) => {
     }
   };
 
-getUserById = async (req, res) => {
+  getUserByIdController = async (req, res) => {
     try {
       const { id } = req.params;
       const data = await this.userService.getUserByIdService(id);
@@ -32,22 +21,35 @@ getUserById = async (req, res) => {
     } catch (error) {
       res.status(400).send({ success: false, message: error.message });
     }
-};
+  };
 
-
-
-updateUser = async (req, res) => {
+  createUserController = async (req, res, next) => {
     try {
-      const { name, password, roleId } = req.body;
+      const { name, mail, pass, RoleId } = req.body;
+      const data = await this.userService.createUserService({name, mail, pass, RoleId});
+      res.status(200).send({ success: true, message: data });
+   } catch (error) {
+     res.status(400).send({ success: false, message: error.message });
+   }
+  };
+
+  updateUserController = async (req, res) => {
+    try {
       const { id } = req.params;
-      const data = await this.userService.updateUserService(id, name, password, RoleId);
+      const { name, password, roleId } = req.body;      
+      const data = await this.userService.updateUserService({
+        id, 
+        name, 
+        password, 
+        roleId
+      });
       res.status(200).send({ success: true, message: data });
     } catch (error) {
       res.status(400).send({ success: false, message: error.message });
     }
-};
+  };
 
-deleteUser = async (req, res) => {
+  deleteUserController = async (req, res) => {
     try {
       const { id } = req.params;
       const data = await this.userService.deleteUserService(id);
@@ -55,11 +57,13 @@ deleteUser = async (req, res) => {
     } catch (error) {
       res.status(400).send({ success: false, message: error.message });
     }
-};
+  };
 
 }
 
-  export default UserController;
+export default UserController;
+
+
 
   /*
   import UserService from "../services/userService.js";

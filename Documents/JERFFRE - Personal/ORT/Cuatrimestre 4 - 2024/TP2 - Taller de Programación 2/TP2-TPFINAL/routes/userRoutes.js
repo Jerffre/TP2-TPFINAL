@@ -6,12 +6,10 @@ const userRoutes = Router();
 
 const userController = new UserController()
 
-userRoutes.get("/", userController.getAllUsers)
-userRoutes.get("/:id", userController.getUserById)
-userRoutes.post("/", userController.createUser)
-userRoutes.put("/:id", userController.updateUser)
-userRoutes.delete("/:id", userController.deleteUser)
-
-
+userRoutes.get("/", userController.getAllUsersController)
+userRoutes.get("/:id", userController.getUserByIdController)
+userRoutes.post("/", userController.createUserController)
+userRoutes.put("/:id", userController.updateUserController)
+userRoutes.delete("/:id", userController.deleteUserController)
 
 export default userRoutes;
