@@ -27,7 +27,9 @@ Este proyecto es una API RESTful desarrollada en Node.js y Sequelize que permite
 
 - git clone <https://github.com/Jerffre/TP2-TPFINAL.git>
 - Instalar dependencias: npm install
-- Configurar la base de datos: Crear un archivo en connection/connection.js con los detalles de tu base de datos (ver Sequelize para más detalles).
+- Configurar la base de datos: Crear un archivo en connection/connection.js con los detalles de tu base de datos. Nosotros utilizamos SQL SERVER MANAGMENT STUDIO y principalmente nos guiamos con el video nombrado debajo. Esto claramente se puede reemplazar por su gestor de base de datos de preferencia pero con la salvedad de modificar el archivo connection.js y verificar justamente algun video, pagina, etc que explique como dar la configuracion pertinente.
+
+Video Configuracion SQL SERVER: https://www.youtube.com/watch?v=uDS6c6DZyY4 
 
 ## Tecnologías utilizadas
 - Node.js: Entorno de ejecución.
@@ -36,6 +38,12 @@ Este proyecto es una API RESTful desarrollada en Node.js y Sequelize que permite
 - SQL Server: Base de datos relacional.
 
 ## Próximos pasos
+
+- Conseguir clientes que adopten nuestro aplicativo en su gestion de deposito para lograr fondos de inversion.
+- Con esos fondos hacer un deploy de la base de datos para de esta manera salir de un estado local y lograr trabajar a distancia.
+- Una vez logrado lo anterior, expandir roles, usuarios y nuevos rubros de acuerdo a las solicitudes del cliente y adaptar la logica previamente definida.
+
+// Me parece bien pero nos manda muy en cana de que tenemos 138910849018431 problemas no resueltos
 
 - Robustecer la API:
     - Implementar validaciones más estrictas para los datos de entrada.
